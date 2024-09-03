@@ -62,7 +62,9 @@ function listen() {
             if (input == ">sc") {
                 selectChannel();
             } else {
-                channel.send(input);
+                if (typeof input === `string` && input.trim().length >= 1) {
+                    channel.send(input);
+                }
                 listen(channel);
             }
         }).catch(e => {
